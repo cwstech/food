@@ -26,6 +26,9 @@ Route::get('/dashboard', function () {
 Route::get('/c/{name}', function ($name) {
     echo $name;
 });
+Route::get('/inactive', function () {
+    return view('inactive');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/table', [TableController::class, 'index'])->name('table');
     Route::get('/table/{no}', [TableController::class, 'TableDetails'])->name('tableno');
+    Route::get('/tables', [TableController::class, 'getDetails'])->name('gettableno');
 });
 
 require __DIR__.'/auth.php';

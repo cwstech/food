@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
             $table->integer('table_no');
             $table->string('table_url')->unique();
+            $table->string('status');
             $table->timestamps();
         });
     }

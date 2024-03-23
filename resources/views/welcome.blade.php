@@ -6,10 +6,13 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/cart.css" />
+    <link rel="stylesheet" href="{{ url('css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url('css/cart.css') }}" />
 
-    <link rel="stylesheet" href="cdn/dataTables.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"
+    />
 
     <link
       rel="stylesheet"
@@ -17,8 +20,13 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <script src="cdn/js/bootstrap.bundle.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
@@ -33,18 +41,38 @@
               <div class="header__restaurant-name"><h1>Food Order</h1></div>
             </div>
           </div>
-          <button
-            class="bt"
-            data-toggle="modal"
-            data-target="#exampleModalCenter"
-          >
-            English
-          </button>
         </div>
 
         <!-- CATEGORY SECTION -->
         <section class="categories-section categories-section--medium-photo">
           <div class="categories-section__container">
+            <!-- FAVRORITES -->
+
+            <!-- <div
+              class="menu-category"
+              data-category-id="-1"
+              data-long-press-delay="1000"
+              id="FavoriteFood"
+            >
+              <div
+                class="menu-category__highlight"
+                id="menu-category__highlight"
+                style="transform: translateX(1.9px); display: block"
+              ></div> 
+              <div
+                class="menu-category__img favcat"
+                style="transform: scale(1)"
+              >
+                <a href="#"
+                  ><img src="images/favourite.png" alt="Favourites"
+                /></a>
+              </div>
+              <div class="menu-category__name no-wrap">
+                <div>
+                  <a href="#">Favourites</a>
+                </div>
+              </div>
+            </div> -->
 
             <!-- POPULAR SECTION -->
             <div
@@ -289,11 +317,48 @@
       <div class="menu-content--categories-medium-photo menu-content">
         <section
           class="menu-products-section menu-products-section--grid"
-          style="padding-bottom: 160px"
+          style="padding-bottom: 100px; padding-top: 30px"
         >
           <div class="menu-grid">
+            <!-- <a
+              href="#"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              >-->
+
             <div class="menu-product">
               <div class="menu-product__item">
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -306,7 +371,7 @@
                   <div class="menu-product__item__name text-overflow">
                     prawn raisukaree
                   </div>
-                  <div class="menu-product__item__price no-wrap">12.00 £</div>
+                  <div class="menu-product__item__price no-wrap"><b>12.00 £</b></div>
                 </div>
                 <div class="menu-product__item__description">
                   a mild, coconut and citrus curry, with prawns, mangetout,
@@ -317,10 +382,47 @@
                 </div>
               </div>
             </div>
+            <!-- </a> -->
+
+            <!-- <a
+              href="/menu/s/en/wagamama/curry/prawn/firecracker-prawn/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+            > -->
             <div class="menu-product">
               <div class="menu-product__item">
                 <!---->
-                
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -344,9 +446,45 @@
                 </div>
               </div>
             </div>
+            <!-- </a> -->
+            <!-- <a
+              href="/menu/s/en/wagamama/curry/chicken/hot-chicken-katsu-curry/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
-                
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                      l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -370,9 +508,47 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            >
+            <a
+              href="/menu/s/en/wagamama/curry/veg/tofu-firecracker/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
                 <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -396,8 +572,47 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            > -->
+            <!-- <a
+              href="/menu/s/en/wagamama/ramen/prawn/chilli-prawn-kimchee-ramen/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -421,8 +636,45 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            ><a
+              href="/menu/s/en/wagamama/ramen/beef/chilli-sirloin-steak-ramen/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -446,8 +698,46 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            ><a
+              href="/menu/s/en/wagamama/ramen/pork/shirodashi-ramen/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -471,8 +761,45 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            ><a
+              href="/menu/s/en/wagamama/ramen/chicken/chicken-ramen/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -496,8 +823,46 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            ><a
+              href="/menu/s/en/wagamama/teppanyaki/all/teriyaki-sirloin-steak-soba/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -521,8 +886,46 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            ><a
+              href="/menu/s/en/wagamama/teppanyaki/all/cod-mokutan-soba/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -546,8 +949,46 @@
                 </div>
               </div>
             </div>
+            <!-- </a
+            ><a
+              href="/menu/s/en/wagamama/teppanyaki/all/yaki-udon/"
+              style="
+                display: contents;
+                -webkit-tap-highlight-color: transparent;
+              "
+              > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -581,6 +1022,36 @@
               > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -614,6 +1085,36 @@
               > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -647,6 +1148,36 @@
               > -->
             <div class="menu-product">
               <div class="menu-product__item">
+                <!---->
+                <div class="menu-product__item__toolbar">
+                  <div style="flex-grow: 1"></div>
+                  <button
+                    class="btn--icon btn--icon--xsm"
+                    style="
+                      background-color: rgb(238, 238, 238);
+                      -webkit-font-smoothing: antialiased;
+                      padding: 5px;
+                      outline: none;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#222222"
+                      stroke-width="1.2px"
+                      x="0px"
+                      y="0px"
+                      viewBox="-1 -2 14 13"
+                      xml:space="preserve"
+                      class="favIcon"
+                    >
+                      <path
+                        d="M11,1c-0.6-0.6-1.5-1-2.3-1C7.8,0,7,0.4,6.3,1L6,1.3L5.7,1C5,0.3,4.2,0,3.3,0S1.6,0.3,1,1C0.3,1.6,0,2.4,0,3.3S0.3,5,1,5.7
+                l4.8,4.8C5.9,10.6,6,10.6,6,10.6c0.1,0,0.2,0,0.2-0.1L11,5.7c0.6-0.6,1-1.5,1-2.4S11.7,1.6,11,1z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
                 <div class="menu-product__item__img">
                   <img
                     class="menu-product__item__img__full"
@@ -1026,6 +1557,6 @@
       </div>
     </div>
   </body>
-  <script src="js/cart.js"></script>
-  <script src="js/script.js"></script>
+  <script src="{{ url('js/cart.js') }}"></script>
+  <script src="{{ url('js/script.js') }}"></script>
 </html>

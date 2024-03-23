@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TableController;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/table', [TableController::class, 'index'])->name('table');
-    Route::get('/table/{no}', [TableController::class, 'TableDetails'])->name('tableno');
+    Route::post('/table/add', [TableController::class, 'tableAdd'])->name('AddTable');
     Route::get('/tables', [TableController::class, 'getDetails'])->name('gettableno');
+    Route::get('/table/{id}', [TableController::class, 'TableDetails'])->name('tableno');
+    Route::post('/table/detele', [TableController::class, 'TableDelete'])->name('tableno');
+});
+Route::post('post', function (Request $request) {
+    // echo "success<br>id:-".$request['id'];
+    dd($request);
+
 });
 
 require __DIR__.'/auth.php';

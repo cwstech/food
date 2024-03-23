@@ -1,8 +1,8 @@
 $('#submit').on('click', function() {
-    // let data = $('#tables').val;
-    // console.log(data);
+    let data = $('#tables').val;
+    console.log(data);
     $.ajax({
-        url: '/your-submit-url', // Replace with the actual URL where you want to submit the form
+        url: '/', // Replace with the actual URL where you want to submit the form
         type: 'POST',
         // data: $('#tables').serialize(),
         data: $('#tables').val(),

@@ -15,7 +15,7 @@ class TableController extends Controller
     }
 
     function tableAdd(Request $request) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyz-_';
         $randomString = '';
         $table = $request->input('tables');
 
@@ -47,7 +47,10 @@ class TableController extends Controller
     }
     function TableDetails($ID) {
         $table_info = table_info::where('table_url', $ID)->get();
-        return view('tableEdit', ['id' => $table_info]);
+        if ($table_info->count()  > 0) {
+            return view('tableEdit', ['id' => $table_info]);
+        }
+        // return view('404', ['id' => $table_info]);
     }
     function TableDelete(Request $request) {
         $table = $request->input('table');

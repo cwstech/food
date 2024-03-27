@@ -14,3 +14,28 @@ $('#submit').on('click', function() {
         }
     });
 });
+//for Category
+$('#add_cat').on('click', function() {
+    let data = $('#category').val();
+    console.log(data);
+    $.ajax({
+        url: '/category/add',
+        type: 'POST',
+        data: {
+            "_token": $('meta[name="csrf-token"]').attr('content'),
+            'data': data,
+        },
+        success: function(response) {
+            console.log(response);
+            if (response.success) {
+                $('#add_cat').val('');
+                alert('Success!');
+            } else {
+                alert('Error: ' + response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+        }
+    });
+});

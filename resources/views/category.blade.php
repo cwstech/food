@@ -9,111 +9,14 @@
             {{ __('Table') }}
         </h2>
     </x-slot>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-dark dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <!-- bootsrap  -->
-                    <div class="row">
-                        @foreach ($id as $info)
-                            <div class="col-md-10">
-                                <form method="post" id="editTable">
-                                    @csrf
-                                    <label>Table No.:- {{ $info['table_no'] }}</label>
-                                </form>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="input-group">
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModalCenter">
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <hr><br>
-                    <div class="row mb-3">
-                        <div class="col-md-1">
-                            Status:
-                        </div>
-                        <div class="col-md-2">
-                            <select id="test" style="background-color: black">
-                                <option value="1" @if ($info['status'] == 1) selected @endif>Busy</option>
-                                <option value="0" @if ($info['status'] == 0) selected @endif>Free</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-1">
-                            <label class="col-form-label">Name:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-1">
-                            <label class="col-form-label">Number:</label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" pattern="\d*" inputmode="numeric" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-1">
-                            <label class="col-form-label">Discount:</label>
-                        </div>
-                        <div class="col-md-1">
-                            <select name="" style="color: black">
-                                <option value="">%</option>
-                                <option value="">₹</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <input class="form-control" type="text" pattern="\d*" inputmode="numeric" />
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-control">00.00</div>
-                        </div>
-                    </div>
-                    <div class="row ml-6">
-                        <div class="col-md-1">
-                            <button class="btn btn-primary">Save</button>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-success">Gentare Bill</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row" style="color: white">
         <div class="col-5 ml-3">
-            <label class="col-form-label">Item:</label>
-            <select id="itm_ser" class="form-control">
-                <option>select</option>
-                <option>raju</option>
-                <option>kaju</option>
-                <option>Ram</option>
-            </select>
-        </div>
-        <div class="col-1">
-            <label class="col-form-label">Qty:</label>
-            <input type="number" inputmode="numeric" class="form-control" style="width: 130%">
-        </div>
-        <div class="col-2">
-            <label class="col-form-label">Price:</label>
-            <input type="text" pattern="\d*" inputmode="numeric" class="form-control">
-        </div>
-        <div class="col-2">
-            <label class="col-form-label">Total:</label>
-            <input type="text" pattern="\d*" inputmode="numeric" class="form-control">
+            <label class="col-form-label">Category Name:</label>
+            <input type="text" id="category" class="form-control" placeholder="Category Name" />
+            <button class="btn btn-success" id="add_cat">Add New</button>
         </div>
         <div class="row">
-            <div class="col-md-1">
-                <button class="btn btn-success">Add</button>
-                <label class="btn btn-danger">refresh</label>
+            <div class="col-md-6">
             </div>
         </div>
     </div>
@@ -286,16 +189,10 @@
                                 #
                             </th>
                             <th style="width: 35%">
-                                Iteam Name
+                                Category Name
                             </th>
                             <th style="width: 10%">
-                                Qty
-                            </th>
-                            <th style="width: 10%">
-                                Price
-                            </th>
-                            <th style="width: 8%" class="text-center">
-                                Total
+                                Items
                             </th>
                             <th style="width: 15%">
                                 Action
@@ -303,39 +200,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($cats as $cat)
                         <tr>
                             <td>
                                 #
                             </td>
                             <td>
                                 <a>
-                                    AdminLTE v3
+                                    {{ $cat['name'] }}
                                 </a>
                                 <br />
                                 <small>
-                                    Created 01.01.2019
+                                    Created {{ $cat['created_at'] }}
                                 </small>
                             </td>
                             <td>
                                 <ul class="list-inline">
-                                    25
+                                    {{ $cat['items_count'] }}
                                 </ul>
                             </td>
-                            <td class="project_progress">
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                                    </div>
-                                </div>
-                                <small>
-                                    57% Complete
-                                </small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
+                            <td class="project-actions text-left">
+                                <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#EditCategory">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
@@ -343,11 +228,12 @@
                                 <a class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
-                                    Cancle
+                                    Delete
                                 </a>
                             </td>
                         </tr>
-                        <tr>
+                        @endforeach
+                        {{-- <tr>
                             <td>
                                 #
                             </td>
@@ -370,25 +256,12 @@
                                     </li>
                                 </ul>
                             </td>
-                            <td class="project_progress">
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="47"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 47%">
-                                    </div>
-                                </div>
-                                <small>
-                                    47% Complete
-                                </small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
+                            <td class="project-actions text-left">
 
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fas fa-pencil-alt">
                                     </i>
-                                    Edit
+                                    Delte
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
@@ -396,28 +269,7 @@
                                     Cancle
                                 </a>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                #
-                            </td>
-                            <td style="text-align: center">
-                                <b>
-                                    Total
-                                </b>
-                            </td>
-                            <td>
-
-                            </td>
-                            <td class="project_progress">
-
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">1500</span>
-                            </td>
-                            <td class="project-actions text-right">
-                            </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
@@ -444,7 +296,7 @@
             <!-- <form id="tableForm"> -->
             <div class="modal-body">
                 <table id="table" class="table">
-                    <th>Are You Sure? Do you want to delte Table Number: {{ $info['table_no'] }}?</th>
+                    <th>Are You Sure? Do you want to delte Table Number: ?</th>
                     {{-- <th>
 
                             <select id="tables">
@@ -467,6 +319,26 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="EditCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" name="eCategory" id="" class="form-controll" placeholder="Category Name" style="width: 100%"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
@@ -477,7 +349,7 @@
                 type: 'POST',
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    "table": "{{ $info['table_url'] }}"
+                    "table": "1"
                 },
                 success: function(response) {
                     location.href = "/table"

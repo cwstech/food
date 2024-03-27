@@ -10,6 +10,8 @@ class item extends Model
     use HasFactory;
     protected $fillable = [
         'cat_id',
+        'name',
+        'des',
         'prise',
         'status',
     ];

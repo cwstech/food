@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cat_id')->references('id')->on('categories');
+            $table->string('name');
+            $table->text('des');
             $table->decimal('prise', 10,2);
             $table->string('status');
             $table->timestamps();

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +24,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/c/{name}', function ($name) {
-    echo $name;
-});
 Route::get('/inactive', function () {
     return view('inactive');
 });
@@ -36,12 +35,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/table/add', [TableController::class, 'tableAdd'])->name('AddTable');
     Route::get('/tables', [TableController::class, 'getDetails'])->name('gettableno');
     Route::get('/table/{id}', [TableController::class, 'TableDetails'])->name('tableno');
-    Route::post('/table/detele', [TableController::class, 'TableDelete'])->name('tableno');
+    Route::post('/table/detele', [TableController::class, 'TableDelete'])->name('del-table');
+    Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::post('/category/add', [CategoryController::class, 'addCategory'])->name('add-category');
+    Route::get('/items', [ItemController::class, 'index'])->name('items');
 });
-Route::post('post', function (Request $request) {
-    // echo "success<br>id:-".$request['id'];
-    dd($request);
-
+Route::get('/{name}', function ($name) {
+    echo $name;
 });
-
 require __DIR__.'/auth.php';
